@@ -10,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['Mouzambik', 'sans-serif'],
+        body: ['Articulat CF', 'sans-serif'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
@@ -64,20 +68,12 @@ const config: Config = {
       },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
       },
       animation: {
@@ -88,6 +84,7 @@ const config: Config = {
   },
   plugins: [
     require('tailwindcss-animate'),
+    require('postcss-nesting'),
     plugin(function ({ addUtilities }) {
       const newUtilities = {
         '.gradient-border-primary-secondary': {
@@ -96,7 +93,6 @@ const config: Config = {
           background: 'linear-gradient(45deg, var(--primary), var(--secondary))',
           borderRadius: '0.5rem', // Match your card’s border radius
           overflow: 'hidden',
-
           '& > *': {
             backgroundColor: 'var(--background)', // Inner background color of the card
             borderRadius: 'inherit',

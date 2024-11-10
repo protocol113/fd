@@ -15,7 +15,21 @@
   --warning: #fcca00;
   --danger: #fe0047;
 }
+/* Import Mouzambik font */
+@font-face {
+  font-family: 'Mouzambik';
+  src: url('/fonts/Mouzambik.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+/* Import Articulat CF font */
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('/fonts/ArticulatCF-SemiBold.ttf') format('truetype');
+  font-weight: 600; /* Semi-bold weight */
+  font-style: normal;
+}
 @layer base {
   body {
     @apply bg-[var(--dark)] text-white;
