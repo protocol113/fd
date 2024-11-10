@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --light: #0f0f0f;
+  --dark: #0a0a0a;
+  --primary: #00ffa8;
+  --secondary: #0582fc;
+  --info: #af00ca;
+  --accent1: #b071fe;
+  --accent2: #da1759;
+  --accent3: #f89432;
+  --success: #00bd30;
+  --warning: #fcca00;
+  --danger: #fe0047;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--dark)] text-white;
+  }
+}
+
+@layer components {
+  .card-container {
+    @apply flex flex-wrap justify-center items-center min-h-screen p-6 gap-6;
+  }
+
+  .stat-card {
+    position: relative;
+    @apply flex flex-col items-center justify-center p-6 rounded-lg overflow-hidden bg-[var(--dark)];
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    @apply rounded-lg bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] opacity-0 transition-opacity duration-300;
+  }
+
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    @apply rounded-lg bg-[var(--dark)];
+  }
+
+  .stat-card:hover::before {
+    opacity: 1;
+  }
+
+  .stat-card > * {
+    position: relative;
+    z-index: 10;
+  }
+
+  .stat-icon {
+    @apply flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-[#4fd1c5] text-[var(--dark)];
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold mb-2;
+  }
+
+  .stat-description {
+    @apply text-white/80;
+  }
+
+  .btn {
+    @apply relative px-6 py-2 font-semibold text-white transition-all duration-300;
+    transform: skewX(-12deg);
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  /* Button content with counter-skew */
+  .btn-content {
+    @apply block w-full h-full text-center transition-all duration-300;
+    transform: skewX(12deg);
+    background-color: var(--background);
+    border-radius: 0;
+    padding: 4px 8px;
+  }
+
+  /* Gradient border button */
+  .btn-primary {
+    @apply relative p-[2px] overflow-hidden;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 0;
+
+    /* Apply dark background to inner content */
+    & > .btn-content {
+      background-color: var(--background);
+    }
+
+    /* Hover effect */
+    &:hover > .btn-content {
+      @apply bg-opacity-80; /* Apply opacity on hover */
+      transform: scale(1.05); /* Add subtle scale effect */
+    }
+  }
+
+  .btn-secondary {
+    @apply relative p-[2px] overflow-hidden font-semibold transition-all duration-300;
+    background: #0a0a0a; /* Gradient border */
+    stroke:#00ffa8;
+    stroke-width: 2 px;
+    border-radius: 0; /* Square corners */
+    color: var(--text-light); /* Light text color */
+
+    /* Inner dark background and light text */
+    & > .btn-content {
+      @apply bg-[#0a0a0a] text-white py-2 px-6 rounded-none block w-full h-full text-center;
+      transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
+    }
+
+    /* Hover effect for dark background */
+    &:hover > .btn-content {
+      @apply bg-opacity-90 text-[var(--primary)];
+    }
+  }
+
+  section {
+    scroll-margin-top: 80px;
+  }
+}
