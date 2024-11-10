@@ -44,7 +44,7 @@ export default function Navbar() {
       {/* Logo Image */}
       <div className="w-32 h-auto">
         <Image 
-          src="/img/logo.png" 
+          src="/img/Logo.png" 
           alt="FliteDek Logo" 
           width={128} 
           height={32} 
